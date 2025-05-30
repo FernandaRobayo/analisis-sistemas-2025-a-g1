@@ -1,0 +1,51 @@
+<div class="reservas-container">
+  <h2>Gestión de Reservas</h2>
+
+  <div class="form-card">
+    <h3>Nueva Reserva</h3>
+    <form (ngSubmit)="guardarReserva()">
+      <div class="form-group">
+        <label for="fecha_hora">Fecha y Hora:</label>
+        <input type="datetime-local" id="fecha_hora" [(ngModel)]="nuevaReserva.fecha_hora" name="fecha_hora" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="cliente_id">ID del Cliente:</label>
+        <input type="number" id="cliente_id" [(ngModel)]="nuevaReserva.cliente_id" name="cliente_id" required min="1">
+      </div>
+
+      <div class="form-group">
+        <label for="mesa_id">ID de la Mesa:</label>
+        <input type="number" id="mesa_id" [(ngModel)]="nuevaReserva.mesa_id" name="mesa_id" required min="1">
+      </div>
+
+      <div class="form-group switch-group">
+        <label for="status">Activa:</label>
+        <input type="checkbox" id="status" [(ngModel)]="nuevaReserva.status" name="status">
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="isLoading">
+        {{ isLoading ? 'Guardando...' : 'Crear Reserva' }}
+      </button>
+    </form>
+  </div>
+
+  <div class="list-card">
+    <h3>Listado de Reservas</h3>
+    <div *ngIf="reservas.length > 0; else noReservas">
+      <div class="reserva-item" *ngFor="let reserva of reservas">
+        <div class="reserva-info">
+          <span class="reserva-fecha">{{ reserva.fechaHora | date:'medium' }}</span>
+          <span class="reserva-cliente">Cliente ID: {{ reserva.cliente.id }}</span>
+          <span class="reserva-mesa">Mesa ID: {{ reserva.mesa.id }}</span>
+          <span class="badge" [class.badge-activa]="reserva.status" [class.badge-inactiva]="!reserva.status">
+            {{ reserva.status ? 'Activa' : 'Inactiva' }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <ng-template #noReservas>
+      <p class="no-reservas">No hay reservas registradas</p>
+    </ng-template>
+  </div>
+</div>

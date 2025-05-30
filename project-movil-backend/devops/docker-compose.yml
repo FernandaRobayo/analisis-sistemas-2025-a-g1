@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  agenda-manager:
+    image: ${CONTAINER_IMAGE}
+    container_name: reserva-restaurante
+    build: 
+      context: ../
+    ports:  
+    - "9002:9002"
+    networks:
+    - network_local_server
+networks:
+  network_local_server:
+    driver: bridge
+    name: network_local_server

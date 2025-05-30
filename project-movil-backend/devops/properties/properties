@@ -1,0 +1,45 @@
+# # App
+spring.application.name=BackendPM
+
+# # ConexiÃ³n a la base de datos PostgreSQL
+spring.datasource.url=jdbc:postgresql://serve-postgres:5432/P2PM
+spring.datasource.username=postgres
+spring.datasource.password=abcd1234
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# # ConfiguraciÃ³n de JPA e Hibernate
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# # ConfiguraciÃ³n del servidor
+ server.port=9002
+
+# # ConfiguraciÃ³n de Swagger con Springdoc OpenAPI
+springdoc.swagger-ui.path=/swagger-ui.html
+
+###############################################################
+# Archivo de propiedades para la aplicaciÃ³n BackendPM ########
+###############################################################
+
+# # Nombre de la aplicaciÃ³n
+# spring.application.name=BackendPM
+
+# # ConexiÃ³n a la base de datos PostgreSQL
+# spring.datasource.url=jdbc:postgresql://localhost:5432/P2PM
+# spring.datasource.username=grupo2
+# spring.datasource.password=123456
+# spring.datasource.driver-class-name=org.postgresql.Driver
+
+# # ConfiguraciÃ³n de JPA e Hibernate
+# spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+# spring.jpa.hibernate.ddl-auto=update
+# spring.jpa.show-sql=true
+# spring.jpa.properties.hibernate.format_sql=true
+
+# # ConfiguraciÃ³n del servidor
+# server.port=9002
+
+# # ConfiguraciÃ³n de Swagger con Springdoc OpenAPI
+# springdoc.swagger-ui.path=/swagger-ui.html

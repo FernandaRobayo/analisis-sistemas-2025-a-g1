@@ -1,0 +1,64 @@
+<div class="mesas-container">
+  <h2>Gestión de Mesas</h2>
+
+  <div class="form-card">
+    <h3 class="form-title">{{ mesaSeleccionada ? 'Editar Mesa' : 'Nueva Mesa' }}</h3>
+    <form #mesaForm="ngForm">
+      <div class="form-group">
+        <label>Número:</label>
+        <input type="number" 
+               name="numero" 
+               [(ngModel)]="newMesa.numero" 
+               required
+               placeholder="Ingrese el número de mesa">
+      </div>
+
+      <div class="form-group">
+        <label>Capacidad:</label>
+        <input type="number" 
+               name="capacidad" 
+               [(ngModel)]="newMesa.capacidad" 
+               required
+               placeholder="Ingrese la capacidad">
+      </div>
+
+      <div class="form-group">
+        <label>Estado:</label>
+        <select name="disponible" [(ngModel)]="newMesa.disponible">
+          <option [ngValue]="true">Disponible</option>
+          <option [ngValue]="false">No Disponible</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" 
+                (click)="guardarMesa()" 
+                class="btn-guardar">
+          {{ mesaSeleccionada ? 'Actualizar Mesa' : 'Guardar Mesa' }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="list-card">
+    <h3 class="list-title">Listado de Mesas</h3>
+    <div class="list-container" *ngIf="mesas.length > 0; else noMesas">
+      <div class="list-item" *ngFor="let mesa of mesas">
+        <div class="item-info">
+          <span class="item-name">Mesa #{{ mesa.numero }}</span>
+          <span class="item-detail">Cap: {{ mesa.capacidad }}</span>
+          <span class="item-status" [class.status-active]="mesa.disponible">
+            {{ mesa.disponible ? 'Disponible' : 'No Disponible' }}
+          </span>
+        </div>
+        <div class="item-actions">
+          <button class="btn-editar" (click)="editarMesa(mesa)">Editar</button>
+          <button class="btn-eliminar" (click)="eliminarMesa(mesa)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noMesas>
+      <p class="no-items">No hay mesas registradas</p>
+    </ng-template>
+  </div>
+</div>
