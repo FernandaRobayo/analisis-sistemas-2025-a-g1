@@ -1,0 +1,329 @@
+.clientes-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.form-card, .list-card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-card.editing {
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  transform: translateY(-5px);
+}
+
+h3 {
+  color: #3498db;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #34495e;
+  font-weight: 500;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  min-width: 150px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: #3498db;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+}
+
+.btn-secondary {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.2);
+}
+
+.btn-secondary.cancelar {
+  background: #95a5a6;
+}
+
+.btn-secondary.cancelar:hover {
+  background: #7f8c8d;
+  box-shadow: 0 4px 8px rgba(149, 165, 166, 0.2);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cliente-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cliente-nombre {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1.1em;
+}
+
+.cliente-telefono {
+  color: #7f8c8d;
+}
+
+.cliente-estado {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.activo {
+  background: #2ecc71;
+  color: white;
+}
+
+.inactivo {
+  background: #95a5a6;
+  color: white;
+}
+
+.cliente-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.cliente-actions button {
+  padding: 8px 16px;
+  font-size: 0.9em;
+  min-width: auto;
+}
+
+.btn-primary.editar {
+  background: #f39c12;
+}
+
+.btn-primary.editar:hover {
+  background: #d68910;
+  box-shadow: 0 4px 8px rgba(243, 156, 18, 0.2);
+}
+
+.no-clientes {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* Animación de carga */
+.isLoading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.isLoading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s infinite linear;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .cliente-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .cliente-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cliente-actions button {
+    width: 100%;
+  }
+
+  li {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+/* Estilos para clientes deshabilitados */
+.disabled {
+  opacity: 0.7;
+  background-color: #f5f5f5;
+}
+
+/* Estilos para el botón de estado */
+.btn-status {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn-habilitar {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-deshabilitar {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-status:hover {
+  opacity: 0.9;
+}
+
+.btn-status i {
+  font-size: 1.1em;
+}
+
+/* Estado del cliente */
+.cliente-estado {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.9em;
+}
+
+.cliente-estado.activo {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.cliente-estado.inactivo {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Botón editar deshabilitado */
+.btn-primary.editar:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Tooltip para botón deshabilitado */
+[title] {
+  position: relative;
+}
+
+[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+}
